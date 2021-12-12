@@ -37,6 +37,7 @@ def guessImage(image, le, model):
     df['classe'] = le.classes_
     df['score'] = score * 100
     df = df.sort_values(by=['score'],ascending=False)
+    df = df.round({'score': 1})
     print(df)
     st.write("The predicted emotion is: ")
     st.write(res)
@@ -58,7 +59,7 @@ if uploaded_file is not None:
     # To See details
     file_details = {"filename":uploaded_file.name, "filetype":uploaded_file.type,
                     "filesize":uploaded_file.size}
-    st.write(file_details)
+    #st.write(file_details)
     img_user = load_image(uploaded_file)
     st.image(img_user,width=250)
     img_user.save(uploaded_file.name)
