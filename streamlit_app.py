@@ -53,6 +53,6 @@ if uploaded_file is not None:
     st.write(file_details)
     img_user = load_image(uploaded_file)
     st.image(img_user,width=250)
+    img_user.save(uploaded_file.name)
     image = img.imread(uploaded_file.name)
     guessImage(image=image, le=le, model=model)
-    # To View Uploaded Image
