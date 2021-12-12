@@ -34,7 +34,9 @@ def guessImage(image, le, model):
     i = np.argmax(pred, axis=-1)
     res = le.classes_[i]
     print(res)
-    st.write("The predicted emotion is: " + res)
+    print(type(res))
+    st.write("The predicted emotion is: ")
+    st.write(res);
 
 st.title('[Deep-Learning] Emotion Detection')
 
