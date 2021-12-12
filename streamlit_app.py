@@ -31,18 +31,18 @@ def load_image(image_file):
 def guessImage(image, le, model):
     result = resize_and_rescale(image)
     pred = model.predict(np.array([result]))
-    i = np.argmax(pred, axis=-1)
-    res = le.classes_[i]
-    print(res)
-    print(type(res))
+    score = tf.nn.softmax(pred[0])
+    res = le.classes_[np.argmax(score)], 100 * np.max(score)
+    df = pd.DataFrame(columns=["classe", "score"])
+    df['classe'] = le.classes_
+    df['score'] = score * 100
+    df = df.sort_values(by=['score'],ascending=False)
+    print(df)
     st.write("The predicted emotion is: ")
-    st.write(res[0])
-    st.write("Pred:")
-    st.write(pred);
-    st.write("i:")
-    st.write(i);
-    st.write("Classes:")
-    st.write(le.classes_);
+    st.write(res)
+    st.write("Array of probability")
+    st.dataframe(data=df)
+
 
 st.title('[Deep-Learning] Emotion Detection')
 
