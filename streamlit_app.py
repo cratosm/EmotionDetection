@@ -16,8 +16,8 @@ def loadLabelEncoder(path):
     le.classes_ = np.load(path)
     return le
 
-model = tf.keras.models.load_model('model.h5')
-le = loadLabelEncoder("class.npy")
+model = tf.keras.models.load_model('model2.h5')
+le = loadLabelEncoder("class2.npy")
 
 resize_and_rescale = tf.keras.Sequential([
   tf.keras.layers.Resizing(48, 48),
