@@ -36,7 +36,13 @@ def guessImage(image, le, model):
     print(res)
     print(type(res))
     st.write("The predicted emotion is: ")
-    st.write(res);
+    st.write(res[0])
+    st.write("Pred:")
+    st.write(pred);
+    st.write("i:")
+    st.write(i);
+    st.write("Classes:")
+    st.write(le.classes_);
 
 st.title('[Deep-Learning] Emotion Detection')
 
